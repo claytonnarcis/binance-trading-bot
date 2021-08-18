@@ -1,0 +1,122 @@
+{
+  "mode": "live",
+  "tz": "BINANCE_TZ",
+  "binance": {
+    "live": {
+      "apiKey": "BINANCE_LIVE_API_KEY",
+      "secretKey": "BINANCE_LIVE_SECRET_KEY"
+    },
+    "test": {
+      "apiKey": "BINANCE_TEST_API_KEY",
+      "secretKey": "BINANCE_TEST_SECRET_KEY"
+    }
+  },
+  "redis": {
+    "host": "binance-redis",
+    "port": 6379,
+    "password": ""
+  },
+  "mongo": {
+    "host": "binance-mongo",
+    "port": 27017,
+    "database": "binance-bot"
+  },
+  "slack": {
+    "enabled": {
+      "__name": "BINANCE_SLACK_ENABLED",
+      "__format": "boolean"
+    },
+    "webhookUrl": "BINANCE_SLACK_WEBHOOK_URL",
+    "channel": "BINANCE_SLACK_CHANNEL",
+    "username": "BINANCE_SLACK_USERNAME"
+  },
+  "localTunnel": {
+    "enabled": false,
+    "subdomain": "default"
+  },
+  "featureToggle": {
+    "notifyOrderConfirm": true,
+    "notifyDebug": false,
+    "notifyOrderExecute": true
+  },
+  "authentication": {
+    "enabled": true,
+    "password": "0328"
+  },
+  "jobs": {
+    "alive": {
+      "enabled": true,
+      "cronTime": "0 0 9 * * *"
+    },
+    "trailingTrade": {
+      "enabled": true,
+      "cronTime": "* * * * * *",
+      "symbols": ["AAVEUPUSDT","ETHUPUSDT","ADAUPUSDT","LTCUPUSDT","DOTUPUSDT","UNIUPUSDT","YFIUPUSDT","LINKUPUSDT"],
+      "botOptions": {
+        "authentication": {
+          "lockList": true,
+          "lockAfter": 120
+        },
+        "autoTriggerBuy": {
+          "enabled": false,
+          "triggerAfter": 20
+        }
+      },
+      "candles": {
+        "interval": "15m",
+        "limit": 4
+      },
+      "buy": {
+        "enabled": true,
+        "gridTrade": [
+          {
+            "triggerPercentage": 1.03,
+            "stopPercentage": 1.02,
+            "limitPercentage": 1.021,
+            "maxPurchaseAmount": 100,
+            "maxPurchaseAmounts": {}
+          }
+        ],
+        "lastBuyPriceRemoveThreshold": -1,
+        "lastBuyPriceRemoveThresholds": {},
+        "athRestriction": {
+          "enabled": true,
+          "candles": {
+            "interval": "1h",
+            "limit": 4
+          },
+          "restrictionPercentage": 0.9
+        }
+      },
+      "sell": {
+        "enabled": true,
+        "gridTrade": [
+          {
+            "triggerPercentage": 1.06,
+            "stopPercentage": 0.98,
+            "limitPercentage": 0.979,
+            "quantityPercentage": -1,
+            "quantityPercentages": {}
+          }
+        ],
+        "stopLoss": {
+          "enabled": false,
+          "maxLossPercentage": 0.8,
+          "disableBuyMinutes": 360,
+          "orderType": "market"
+        }
+      },
+      "system": {
+        "temporaryDisableActionAfterConfirmingOrder": 20,
+        "checkManualOrderPeriod": 5,
+        "placeManualOrderInterval": 5,
+        "refreshAccountInfoPeriod": 1,
+        "checkOrderExecutePeriod": 10
+      }
+    },
+    "trailingTradeIndicator": {
+      "enabled": true,
+      "cronTime": "* * * * * *"
+    }
+  }
+}
