@@ -66,7 +66,7 @@ services:
 
   binance-redis:
     container_name: binance-redis
-    image: redis:6.2
+    image: redis
     sysctls:
       net.core.somaxconn: 1024
     networks:
@@ -80,7 +80,7 @@ services:
 
   binance-mongo:
     container_name: binance-mongo
-    image: mongo:3.2.20-jessie
+    image: mongo
     restart: unless-stopped
     networks:
       - internal
