@@ -4,7 +4,7 @@ services:
   binance-bot:
     container_name: binance-bot
     # image: chrisleekr/binance-trading-bot:latest
-    image: clayton/binance-bot:latest
+    image: clayton/binance-bot-bkh:latest
     networks:
       - internal
     env_file:
