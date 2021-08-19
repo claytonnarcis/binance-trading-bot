@@ -51,7 +51,7 @@
     "trailingTrade": {
       "enabled": true,
       "cronTime": "* * * * * *",
-      "symbols": ["AAVEUPUSDT","ETHUPUSDT","ADAUPUSDT","LTCUPUSDT","DOTUPUSDT","UNIUPUSDT","YFIUPUSDT","LINKUPUSDT"],
+      "symbols": ["AAVEUPUSDT","ETHUPUSDT","ADAUPUSDT","LTCUPUSDT","DOTUPUSDT","UNIUPUSDT","YFIUPUSDT","LINKUPUSDT","1INCHUPUSDT","ADAUPUSDT","FILUPUSDT","BNBUPUSDT","EOSUPUSDT","SUSHIUPUSDT","XRPUPUSDT"],
       "botOptions": {
         "authentication": {
           "lockList": true,
@@ -64,7 +64,7 @@
       },
       "candles": {
         "interval": "15m",
-        "limit": 4
+        "limit": 30
       },
       "buy": {
         "enabled": true,
@@ -75,14 +75,21 @@
             "limitPercentage": 1.021,
             "maxPurchaseAmount": 100,
             "maxPurchaseAmounts": {}
-          }
+          },
+          {
+            "triggerPercentage": 0.98,
+            "stopPercentage": 1.02,
+            "limitPercentage": 1.021,
+            "maxPurchaseAmount": 100,
+            "maxPurchaseAmounts": {}
+          }          
         ],
         "lastBuyPriceRemoveThreshold": -1,
         "lastBuyPriceRemoveThresholds": {},
         "athRestriction": {
           "enabled": true,
           "candles": {
-            "interval": "1h",
+            "interval": "30m",
             "limit": 4
           },
           "restrictionPercentage": 0.9
@@ -92,17 +99,31 @@
         "enabled": true,
         "gridTrade": [
           {
-            "triggerPercentage": 1.06,
+            "triggerPercentage": 1.1,
             "stopPercentage": 0.98,
             "limitPercentage": 0.979,
-            "quantityPercentage": -1,
+            "quantityPercentage": 0.3,
             "quantityPercentages": {}
-          }
+          },
+          {
+            "triggerPercentage": 1.15,
+            "stopPercentage": 0.98,
+            "limitPercentage": 0.979,
+            "quantityPercentage": 0.3,
+            "quantityPercentages": {}
+          },
+          {
+            "triggerPercentage": 1.2,
+            "stopPercentage": 0.98,
+            "limitPercentage": 0.979,
+            "quantityPercentage": 1,
+            "quantityPercentages": {}
+          }                    
         ],
         "stopLoss": {
           "enabled": false,
-          "maxLossPercentage": 0.8,
-          "disableBuyMinutes": 360,
+          "maxLossPercentage": 0.93,
+          "disableBuyMinutes": 60,
           "orderType": "market"
         }
       },

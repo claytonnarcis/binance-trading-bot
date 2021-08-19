@@ -3,7 +3,8 @@ version: '3.7'
 services:
   binance-bot:
     container_name: binance-bot
-    image: chrisleekr/binance-trading-bot:latest
+    # image: chrisleekr/binance-trading-bot:latest
+    image: clayton/binance-bot:latest
     networks:
       - internal
     env_file:
@@ -18,7 +19,7 @@ services:
       - BINANCE_JOBS_TRAILING_TRADE_ENABLED=true
 
       #symbols
-      # - BINANCE_JOBS_TRAILING_TRADE_SYMBOLS=["ETHUSDT"]
+      - BINANCE_JOBS_TRAILING_TRADE_SYMBOLS=["AXSUSDT"]
       # - BINANCE_JOBS_TRAILING_TRADE_SYMBOLS=["AAVEUPUSDT","ETHUPUSDT","ADAUPUSDT","LTCUPUSDT","DOTUPUSDT","UNIUPUSDT","YFIUPUSDT","LINKUPUSDT"]
       # - BINANCE_JOBS_TRAILING_TRADE_SYMBOLS=["AAVEDOWNUSDT","ETHDOWNUSDT","ADADOWNUSDT","LTCDOWNUSDT","DOTDOWNUSDT","UNIDOWNUSDT","FILDOWNUSDT"]
       # - BINANCE_JOBS_TRAILING_TRADE_CANDLES_INTERVAL=15m
@@ -57,7 +58,7 @@ services:
       - BINANCE_AUTHENTICATION_PASSWORD=1234
 
     ports:
-      - 8080:80
+      - 8081:80
     logging:
       driver: 'json-file'
       options:
