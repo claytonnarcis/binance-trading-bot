@@ -12,12 +12,12 @@
     }
   },
   "redis": {
-    "host": "binance-redis",
+    "host": "binance-redis-bkh",
     "port": 6379,
     "password": ""
   },
   "mongo": {
-    "host": "binance-mongo",
+    "host": "binance-mongo-bkh",
     "port": 27017,
     "database": "binance-bot"
   },

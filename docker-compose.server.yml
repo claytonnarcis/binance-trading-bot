@@ -19,7 +19,7 @@ services:
       - BINANCE_JOBS_TRAILING_TRADE_ENABLED=true
 
       #symbols
-      - BINANCE_JOBS_TRAILING_TRADE_SYMBOLS=["AXSUSDT"]
+      # - BINANCE_JOBS_TRAILING_TRADE_SYMBOLS=["AXSUSDT"]
       # - BINANCE_JOBS_TRAILING_TRADE_SYMBOLS=["AAVEUPUSDT","ETHUPUSDT","ADAUPUSDT","LTCUPUSDT","DOTUPUSDT","UNIUPUSDT","YFIUPUSDT","LINKUPUSDT"]
       # - BINANCE_JOBS_TRAILING_TRADE_SYMBOLS=["AAVEDOWNUSDT","ETHDOWNUSDT","ADADOWNUSDT","LTCDOWNUSDT","DOTDOWNUSDT","UNIDOWNUSDT","FILDOWNUSDT"]
       # - BINANCE_JOBS_TRAILING_TRADE_CANDLES_INTERVAL=15m
@@ -47,15 +47,15 @@ services:
       # - BINANCE_JOBS_TRAILING_TRADE_BUY_ATH_RESTRICTION_RESTRICTION_PERCENTAGE=0.9
 
       #redis settings
-      - BINANCE_REDIS_HOST=binance-redis
+      - BINANCE_REDIS_HOST=binance-redis-bkh
       - BINANCE_REDIS_PORT=6379
       - BINANCE_REDIS_PASSWORD=secretp422
 
       #system settings
       - BINANCE_JOBS_TRAILING_TRADE_SYSTEM_REFRESH_ACCOUNT_INFO_PERIOD=10
       - BINANCE_JOBS_TRAILING_TRADE_SYSTEM_CHECK_ORDER_EXECUTE_PERIOD=10
-      - BINANCE_AUTHENTICATION_ENABLED=false
-      - BINANCE_AUTHENTICATION_PASSWORD=1234
+      # - BINANCE_AUTHENTICATION_ENABLED=true
+      # - BINANCE_AUTHENTICATION_PASSWORD=1234
 
     ports:
       - 8081:80
@@ -65,7 +65,7 @@ services:
         max-size: '50m'
 
   binance-redis:
-    container_name: binance-redis
+    container_name: binance-redis-bkh
     image: redis
     sysctls:
       net.core.somaxconn: 1024
@@ -79,7 +79,7 @@ services:
       redis-server /usr/local/etc/redis/redis.conf --requirepass secretp422
 
   binance-mongo:
-    container_name: binance-mongo
+    container_name: binance-mongo-bkh
     image: mongo
     restart: unless-stopped
     networks:
